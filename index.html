@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quick Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Quick Cart</h1>
+    <nav>
+      <a href="#mobiles">Mobiles</a>
+      <a href="#laptops">Laptops</a>
+      <a href="#gadgets">Electronics</a>
+      <a href="cart.html">🛒 Cart</a>
+    </nav>
+  </header>
+
+  <!-- 🔹 Mobiles Section -->
+  <section id="mobiles" class="product-section">
+    <h2>Mobiles</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="Samsung S25 ultra.webp" alt="Mobile 1">
+        <h3>Samsung S25 Ultra</h3>
+        <p>₹119999</p>
+        <button onclick="addToCart('Samsung S25 Ultra', 119999, 'Samsung S25 ultra.webp')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="xiaomi 15 ultra.jpg" alt="Mobile 2">
+        <h3>Xiaomi 15 Ultra</h3>
+        <p>₹99999</p>
+        <button onclick="addToCart('Xiaomi 15 Ultra', 99999, 'xiaomi 15 ultra.jpg')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="vivo x200 pro.webp" alt="Mobile 3">
+        <h3>Vivo X200 Pro</h3>
+        <p>₹89999</p>
+        <button onclick="addToCart('Vivo X200 Pro', 89999, 'vivo x200 pro.webp')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="One plus 13.avif" alt="Mobile 4">
+        <h3>Oneplus 13</h3>
+        <p>₹69999</p>
+        <button onclick="addToCart('Oneplus 13', 69999, 'One plus 13.avif')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Laptops Section -->
+  <section id="laptops" class="product-section">
+    <h2>Laptops</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="hp victus.avif" alt="Laptop 1">
+        <h3>HP Victus</h3>
+        <p>₹55000</p>
+        <button onclick="addToCart('HP Victus', 55000, 'hp victus.avif')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Asus tuf gaming.jpg" alt="Laptop 2">
+        <h3>Asus TUF Gaming</h3>
+        <p>₹65000</p>
+        <button onclick="addToCart('Asus TUF Gaming', 65000, 'Asus tuf gaming.jpg')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="lenovo loq.webp" alt="Laptop 3">
+        <h3>Lenovo LOQ</h3>
+        <p>₹99999</p>
+        <button onclick="addToCart('Lenovo LOQ', 99999, 'lenovo loq.webp')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="Dell gaming.avif" alt="Laptop 4">
+        <h3>Dell Gaming G-Series</h3>
+        <p>₹199999</p>
+        <button onclick="addToCart('Dell Gaming G-Series', 199999, 'Dell gaming.avif')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 🔹 Earbuds Section -->
+  <section id="gadgets" class="product-section">
+    <h2>Ear Buds</h2>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="one plus.avif" alt="Earbud 1">
+        <h3>OnePlus Buds 3</h3>
+        <p>₹3499</p>
+        <button onclick="addToCart('OnePlus Buds 3', 3499, 'one plus.avif')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="REDMI-Buds-6-Pro-1.jpg" alt="Earbud 2">
+        <h3>Redmi Buds 6 Pro</h3>
+        <p>₹4999</p>
+        <button onclick="addToCart('Redmi Buds 6 Pro', 4999, 'REDMI-Buds-6-Pro-1.jpg')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="boat 701.webp" alt="Earbud 3">
+        <h3>boAt 701</h3>
+        <p>₹2999</p>
+        <button onclick="addToCart('boAt 701', 2999, 'boat 701.webp')">Add to Cart</button>
+      </div>
+      <div class="product-card">
+        <img src="samsung buds 3.jpg" alt="Earbud 4">
+        <h3>Samsung Buds 3 Pro</h3>
+        <p>₹27999</p>
+        <button onclick="addToCart('Samsung Buds 3 Pro', 27999, 'samsung buds 3.jpg')">Add to Cart</button>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 E-Shop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function addToCart(name, price, image) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.push({ name, price, image });
+      localStorage.setItem("cart", JSON.stringify(cart));
+      alert(name + " added to cart!");
+      window.location.href = "cart.html"; // redirect after adding
+    }
+  </script>
+</body>
+</html>

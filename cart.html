@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Your Cart</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Your Cart</h1>
+    <nav>
+      <a href="index.html">⬅ Back to Shop</a>
+    </nav>
+  </header>
+
+  <section id="cart-items" class="product-section">
+    <h2>Items in Your Cart</h2>
+    <div id="cart-container" class="product-grid"></div>
+    <h3 id="total"></h3>
+    <button onclick="clearCart()">Clear Cart</button>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 E-Shop. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function loadCart() {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      let container = document.getElementById("cart-container");
+      let totalPrice = 0;
+
+      if (cart.length === 0) {
+        container.innerHTML = "<p>Your cart is empty.</p>";
+        document.getElementById("total").innerText = "";
+        return;
+      }
+
+      container.innerHTML = "";
+      cart.forEach((item, index) => {
+        totalPrice += item.price;
+
+        container.innerHTML += `
+          <div class="product-card">
+            <img src="${item.image}" alt="${item.name}" style="width:150px; height:150px;">
+            <h3>${item.name}</h3>
+            <p>₹${item.price}</p>
+            <button onclick="removeItem(${index})">Remove</button>
+          </div>
+        `;
+      });
+
+      document.getElementById("total").innerText = "Total: ₹" + totalPrice;
+    }
+
+    function removeItem(index) {
+      let cart = JSON.parse(localStorage.getItem("cart")) || [];
+      cart.splice(index, 1);
+      localStorage.setItem("cart", JSON.stringify(cart));
+      loadCart();
+    }
+
+    function clearCart() {
+      localStorage.removeItem("cart");
+      loadCart();
+    }
+
+    loadCart();
+  </script>
+</body>
+</html>
